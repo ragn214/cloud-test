@@ -34,9 +34,14 @@ WORLD_MAP = {
             {"text": "Run back to the entrance", "action": "move_entrance"}
         ]
     },
-    "game_over": {
+    "game_over_defeat": {
         "title": "💀 Game Over",
         "description": "Your adventure has come to an end.",
+        "choices": [{"text": "Restart Adventure", "action": "reset_game"}]
+    },
+    "game_over_victory": {
+        "title": "🏆 Victory!",
+        "description": "You have triumphed over the shadow creature!",
         "choices": [{"text": "Restart Adventure", "action": "reset_game"}]
     }
 }
@@ -61,13 +66,13 @@ def handle_action(action_type):
     elif action_type == "fight_monster":
         if "Rusty Sword" in state["inventory"]:
             log_event("⚔️ Defiance! You swing your Rusty Sword. With a loud shriek, the shadow creature dissolves into ash. You win!")
-            state["location"] = "game_over"
+            state["location"] = "game_over_victory"
         else:
             state["health"] -= 50
             log_event("💥 Ouch! You fight bare-handed. The creature slashes your arm (-50 HP).")
             if state["health"] <= 0:
                 log_event("💀 Your wounds are fatal. You collapse among the roots.")
-                state["location"] = "game_over"
+                state["location"] = "game_over_defeat"
                 
     elif action_type == "reset_game":
         st.session_state.clear()
