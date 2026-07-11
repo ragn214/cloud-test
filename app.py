@@ -79,7 +79,7 @@ def handle_action(action_type):
         st.rerun()
 
 # 4. FRONTEND UI & INTERACTIVE LAYER
-st.title("🛡️ Backend Text-RPG Engine")
+st.title("🛡️ HELLO BBBBBBBBB")
 st.write("A hybrid Game Dev and Backend Engineering proof-of-concept.")
 
 # Render Current Location Data
